@@ -19,11 +19,11 @@ COPY . .
 RUN cargo build --release
 
 # ---- Runtime stage ----
-FROM debian:bookworm-slim
+FROM debian:bullseye-slim AS runtime
 
 WORKDIR /app
+COPY --from=builder /app/target/release/hello-ci-cd /app/hello-ci-cd
 
-# Copy the compiled binary
-COPY --from=builder /usr/src/app/target/release/hello-ci-cd .
-
+# Run the binary
 CMD ["./hello-ci-cd"]
+
