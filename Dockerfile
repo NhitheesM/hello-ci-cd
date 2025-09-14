@@ -24,6 +24,6 @@ FROM debian:bookworm-slim
 WORKDIR /app
 
 # Copy the compiled binary
-COPY --from=builder /usr/src/app/target/release/hello-rust .
+COPY --from=builder /usr/src/app/target/release/hello-ci-cd .
 
-CMD ["./hello-rust"]
+CMD ["./hello-ci-cd"]
